@@ -1,10 +1,19 @@
-smartquotes
-===========
+Copyright 2013 J.P. Mensching
 
-A jQuery plugin to replace curly quotes, elipses, and em-dashes inserted by MS Word ('smart characters') with straight quotes, three periods, and hyphens.
-To use, simply include the script in your page after the jQuery library and call the plugin on any element where you don't want 
-smart characters to appear.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-For example, if I didn't want any of the form inputs on my page to contain smart quotes, I would add this line:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-$('form input').smartquotes();
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
