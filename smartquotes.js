@@ -1,27 +1,54 @@
 (function( $ ) {
   $.fn.smartQuotes = function() {
-  	return this.find('input').keydown(function(){
-  		var input=$(this);
-  		setTimeout(function(){
-			var value=$(input).val(); //User input
-			var newString=[]; //Will contain quote-corrected input
-			for(var i=0; i<value.length; i++) //Loop over user input character by character
-			{
-				//charCodeAt() returns ISO10646 decimal value of argument, not Unicode
-				if(value.charCodeAt(i)==8220||value.charCodeAt(i)==8221) //Smart double quotes
-					newString.push('"');
-				else if(value.charCodeAt(i)==8216||value.charCodeAt(i)==8217) //Smart single quotes
-					newString.push("'");
-				else if(value.charCodeAt(i)==8211||value.charCodeAt(i)==8212) //Em-dashes
-					newString.push('-');
-				else if(value.charCodeAt(i)==8230) //Elipses
-					newString.push('...');
-				else 
-					newString.push(value[i]);
+	function smartQuotes(elem){
+		if (elem.length === 0){
+	  		return;
+	  	}
+
+	  	var children = elem.children,
+	  		count = children.length,
+	  		content = elem.is('input') ? elem.value : elem.text(),
+	  		contentLength = content.length,
+	  		newContent = [],
+	  		i,
+	  		replacements = {
+	  			8220: '"',
+	  			8221: '"',
+	  			8216: '\'',
+	  			8217: '\'',
+	  			8211: '-',
+	  			8212: '-',
+	  			8230: '...'
+	  		},
+	  		keys = Object.keys(replacements),
+	  		keyCode;
+
+	  	//If element has children, call recursively on each
+		if(count > 0){
+			for(i = 0; i < count; i++){
+				smartQuotes($(children[i]));
 			}
-			newString=newString.join('');
-			$(input).val(newString);
-		}, 50); //JS doesn't register input immediately, needs a small delay
-  	});
+		}
+
+		//Loop through input and find smart characters
+		for(i = 0; i < contentLength; i++){
+			keyCode = content.charCodeAt(i);
+			if (keys.indexOf(keyCode) !== -1){
+				newContent.push(replacements[keyCode]);
+			}
+			else {
+				newContent.push(content[i]);
+			}
+		}
+
+		if(elem.is('input')){
+			elem.val(newContent.join(''));
+		}
+		else {
+			elem.text(newContent.join(''));
+		}
+	};
+
+	smartQuotes(this);
   };
 })( jQuery );
