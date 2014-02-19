@@ -7,4 +7,6 @@ smart characters to appear.
 
 For example, if I didn't want any of the form inputs on my page to contain smart quotes, I would add this line:
 
-$('form input').smartquotes();
+$('form input').smartQuotes();
+
+This plugin is recursive, so any child elements of the target element will also be checked for smart replacements.
